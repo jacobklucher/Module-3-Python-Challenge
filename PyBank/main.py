@@ -5,6 +5,8 @@
 import csv
 import os
 
+#print(os.getcwd())
+
 # Files to load and output (update with correct file paths)
 file_to_load = os.path.join("Resources", "budget_data.csv")  # Input file path
 file_to_output = os.path.join("analysis", "budget_analysis.txt")  # Output file path
@@ -20,6 +22,12 @@ months = []
 max_profit = ["", 0]
 min_profit = ["", 0]
 
+def convert_to_dict(budget):
+    return {
+        "date": budget[0],
+        "profit": float(budget[1])
+    }
+
 # Open and read the csv
 with open(file_to_load) as financial_data:
     reader = csv.reader(financial_data, delimiter=",")
@@ -27,24 +35,19 @@ with open(file_to_load) as financial_data:
     # Skip the header row
     header = next(reader)
 
-    # Extract first row to avoid appending to net_change_list
-    
-
-    # Track the total and net change
-
-
     # Process each row of data
     for row in reader:
 
-        month = row[0]
-        net = int(row[1])
+        budget_dict = convert_to_dict(row)
+        month = budget_dict["date"]
+        net = budget_dict["profit"]
 
         # Track the total
         total_months += 1
         total_net += net
 
         # Track the net change
-        if previous_net is not None:
+        if previous_net != 0:
             net_change = net - previous_net
             net_change_list.append(net_change)
             months.append(month)
@@ -68,9 +71,10 @@ average_changes = sum(net_change_list) / len(net_change_list)
 output = (f"Financial Analysis\n"
           f"----------------------------\n"
           f"Total Months: {total_months}\n"
-          f"Average Change: {average_changes}\n"
-          f"Greatest Increase in Profits: {max_profit[0]} {max_profit[1]}\n"
-          f"Greatest Decrease in Profits: {min_profit[0]} {min_profit[1]}\n")
+          f"Total: ${total_net}\n"
+          f"Average Change: ${average_changes:0.2f}\n"
+          f"Greatest Increase in Profits: {max_profit[0]} (${max_profit[1]})\n"
+          f"Greatest Decrease in Profits: {min_profit[0]} (${min_profit[1]})\n")
 
 # Print the output
 print(output)
