@@ -62,7 +62,7 @@ def calculate_results(data):
         candidate_votes[candidate] = (vote_percentage, votes)
 
         election_results += (
-            f"{candidate}: {vote_percentage:.3f}% ({votes})\n"
+            f"{candidate}: {candidate_votes[candidate][0]:0.3f}% ({candidate_votes[candidate][1]})\n"
         )
 
     # Generate and print the winning candidate summary
