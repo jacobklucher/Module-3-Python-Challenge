@@ -2,13 +2,20 @@
 
 **File Structure:**
 ```
-└─Module-3-Python-Challenge
-  ├─PyBank
-  │  ├─analysis
-  │  └─Resources
-  └─PyPoll
-      ├─analysis
-      └─Resources
+Module-3-Python-Challenge
+│
+├─PyBank
+│  │  main.py
+│  ├─analysis
+│  │      budget_analysis.txt
+│  └─Resources
+│          budget_data.csv
+└─PyPoll
+    │  main.py
+    ├─analysis
+    │      election_analysis.txt
+    └─Resources
+            election_data.csv
 ```
 
 The *PyBank* folder contains the **main.py script** for analyzing the financial records.
