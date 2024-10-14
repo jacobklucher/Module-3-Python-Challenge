@@ -12,12 +12,12 @@
 ```
 
 The *PyBank* folder contains the **main.py script** for analyzing the financial records.
-+ The analysis folder contains budget_analysis.txt which shows the financial analysis output.
-+ The Resources folder contains budget_data.csv which was used to read in the data for analyzing.
++ The *analysis* folder contains **budget_analysis.txt** which shows the financial analysis output.
++ The *Resources* folder contains **budget_data.csv** which was used to read in the data for analyzing.
 
 The *PyPoll* folder contains the **main.py script** for analyzing the votes.
-+ The analysis folder contains election_analysis.txt which shows the voting analysis output.
-+ The Resources folder contains election_data.csv which was used to read in the data for analyzing.
++ The *analysis* folder contains **election_analysis.txt** which shows the voting analysis output.
++ The *Resources* folder contains **election_data.csv** which was used to read in the data for analyzing.
 
 ## Sources:
 
