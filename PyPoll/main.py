@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-"""PyPoll Homework Starter File."""
+"""PyPoll Homework main File."""
 
 # Import necessary modules
 import csv
@@ -19,17 +19,13 @@ candidate_votes = {}
 win_candidate = ""
 win_count = 0
 vote_percentage = 0
+election_results = ""
 
-# Open the CSV file and process it
-with open(file_to_load) as election_data:
-    reader = csv.reader(election_data)
+# Process each row of csv and add candidates to dictionary
+def count_votes(data):
+    global total_votes, candidate_votes
 
-    # Skip the header row
-    header = next(reader)
-
-    # Loop through each row of the dataset and process it
-    for row in reader:
-
+    for row in data:
         # Print a loading indicator (for large datasets)
         print(". ", end="")
 
@@ -46,26 +42,12 @@ with open(file_to_load) as election_data:
         # Add a vote to the candidate's count
         candidate_votes[candidate_name] += 1
 
-    # Print new line for better results formatting in terminal
-    print("\n")
-                
 
-# Open a text file to save the output
-with open(file_to_output, "w") as txt_file:
-
-    # Print the total vote count (to terminal)
-
-    # Write the total vote count to the text file
-    election_results = (
-        f"Election Results\n"
-        f"-------------------------\n"
-        f"Total Votes: {total_votes}\n"
-        f"\n"
-    )
-
-    # Loop through the candidates to determine vote percentages and identify the winner
-    for candidate in candidate_votes:
-
+# Loop through the candidates to determine vote percentages and identify the winner
+def calculate_results(data):
+    global win_candidate, win_count, vote_percentage, election_results
+    
+    for candidate in data:
         # Get the vote count and calculate the percentage
         votes = candidate_votes[candidate]
 
@@ -89,6 +71,34 @@ with open(file_to_output, "w") as txt_file:
         f"Winner: {win_candidate}\n"
         f"-------------------------\n"
     )
+    
+
+# Open the CSV file and process it
+with open(file_to_load) as election_data:
+    reader = csv.reader(election_data)
+
+    # Skip the header row
+    header = next(reader)
+
+    # Loop through each row of the dataset and process it
+    count_votes(reader)
+
+    # Print new line for better results formatting in terminal
+    print("\n")                
+
+# Open a text file to save the output
+with open(file_to_output, "w") as txt_file:
+
+    # Write the total vote count to the text file
+    election_results = (
+        f"Election Results\n"
+        f"-------------------------\n"
+        f"Total Votes: {total_votes}\n"
+        f"-------------------------\n"
+    )
+
+    # Obtain candidate values and identify winner
+    calculate_results(candidate_votes)
 
     print(election_results)
 
