@@ -1,6 +1,7 @@
 # Module-3-Python-Challenge
 
 **File Structure:**
+```
 └─Module-3-Python-Challenge
   ├─PyBank
   │  ├─analysis
@@ -8,6 +9,7 @@
   └─PyPoll
       ├─analysis
       └─Resources
+```
 
 The *PyBank* folder contains the **main.py script** for analyzing the financial records.
 + The analysis folder contains budget_analysis.txt which shows the financial analysis output.
